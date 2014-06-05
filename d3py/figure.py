@@ -51,8 +51,8 @@ class Figure(object):
         template: string
             HTML template for figure. Defaults to /d3py_template (Also, when 
             building your own HTML, please see the default template for 
-            correct usage of {{ name }}, {{ host }}, {{ port }}, and 
-            {{ font }}
+            correct usage of {name}, {host}, {port}, and 
+            {font} string format subsitutions
         host: string
             Generally default to 'localhost' for local plotting
         port: int
@@ -123,9 +123,8 @@ class Figure(object):
     def _build_html(self):
         '''Build HTML, either via 'template' argument or default template 
         at /d3py_template.html.'''
-        self.html = self.template
-        self.html = self.html.replace("{{ name }}", self.name)
-        self.html = self.html.replace("{{ font }}", self.font)
+        self.html = str(self.template)
+        self.html = self.html 
         self._save_html()
 
     def _build_geoms(self):
@@ -264,8 +263,10 @@ class Figure(object):
         '''Save HTML data. Will save Figure name to 'name.html'. Will also
         replace {{ port }} and {{ host }} fields in template with
         Figure.port and Figure.host '''
-        self.html = self.html.replace("{{ port }}", str(self.port))
-        self.html = self.html.replace("{{ host }}", str(self.host))
+        self.html = self.html.format(**{'port': str(self.port),
+                                        'host': self.host,
+                                        'name': self.name,
+                                        'font': str(self.font)})
         # write html
         filename = "%s.html"%self.name
         self.filemap[filename] = {"fd":StringIO(self.html),
@@ -333,7 +334,7 @@ class Figure(object):
                 print("Shutting down httpd")
                 self.httpd.shutdown()
                 self.httpd.server_close()
-        except(Exception, e):
+        except Exception as e:
             print("Error in clean-up: %s"%e)
 
 

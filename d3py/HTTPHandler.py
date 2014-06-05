@@ -58,7 +58,7 @@ class CustomHTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         f.write("<html>\n<title>Directory listing</title>\n")
         f.write("<body>\n<h2>Directory listing</h2>\n")
         f.write("<hr>\n<ul>\n")
-        for path, meta in self.filemap.iteritems():
+        for path, meta in self.filemap.items():
             f.write('<li><a href="%s">%s</a>\n' % (path, path))
         f.write("</ul>\n<hr>\n</body>\n</html>\n")
         length = f.tell()

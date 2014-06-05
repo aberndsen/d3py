@@ -99,7 +99,7 @@ class Vega(object):
         Ex: >>>my_vega.update_vis(height=800, width=800)
         '''
 
-        for key, value in kwargs.iteritems():
+        for key, value in kwargs.items():
             setattr(self, key, value)
 
         self.build_vega()
@@ -121,7 +121,7 @@ class Vega(object):
 
         '''
 
-        for key, value in kwargs.iteritems():
+        for key, value in kwargs.items():
                 setattr(self, key, value)
 
         self.build_vega()
@@ -273,7 +273,7 @@ class Vega(object):
 
         #Dicts
         if isinstance(data, dict) or isinstance(data, pd.Series):
-            values = [{"x": x, "y": y} for x, y in data.iteritems()]
+            values = [{"x": x, "y": y} for x, y in data.items()]
 
         #Dataframes
         if isinstance(data, pd.DataFrame):
