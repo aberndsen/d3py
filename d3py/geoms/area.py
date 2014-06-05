@@ -1,4 +1,4 @@
-from geom import Geom, JavaScript, Selection, Function
+from .geom import Geom, JavaScript, Selection, Function
 
 class Area(Geom):
     def __init__(self,x,yupper,ylower,**kwargs):

@@ -1,4 +1,4 @@
-  # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 '''
 Figure
 -------
@@ -9,18 +9,18 @@ can be subclassed for other figure types.
 '''
 import logging
 import webbrowser
-from HTTPHandler import CustomHTTPRequestHandler, ThreadedHTTPServer
+from .HTTPHandler import CustomHTTPRequestHandler, ThreadedHTTPServer
 import IPython.core.display
 import threading
-from cStringIO import StringIO
+from io import StringIO
 import time
 import json
 import os
 from pkg_resources import resource_string
 
-from css import CSS
-import javascript as JS
-import vega
+from .css import CSS
+from . import javascript as JS
+from . import vega
 
 class Figure(object):
     '''Abstract Base Class for all figures'''

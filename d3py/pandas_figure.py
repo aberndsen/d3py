@@ -2,8 +2,8 @@ import numpy as np
 import logging
 import json
 
-import javascript as JS
-from figure import Figure
+from . import javascript as JS
+from .figure import Figure 
 
 class PandasFigure(Figure):
     def __init__(self, data, name="figure", width=800, height=400, 

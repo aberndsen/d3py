@@ -2,8 +2,8 @@ import logging
 import json
 from networkx.readwrite import json_graph
 
-import javascript as JS
-from figure import Figure
+from . import javascript as JS
+from .figure import Figure
 
 class NetworkXFigure(Figure):
     def __init__(self, graph, name="figure", width=400, height=100, 

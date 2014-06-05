@@ -1,6 +1,6 @@
-import SimpleHTTPServer
-import SocketServer
-from cStringIO import StringIO
+from http import server as SimpleHTTPServer
+from http.server import socketserver as SocketServer
+from io import StringIO
 import sys
 
 class ThreadedHTTPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
