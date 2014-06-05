@@ -153,7 +153,7 @@ class PandasFigure(Figure):
         ]
         try:
             s = json.dumps(d, sort_keys=True, indent=4)
-        except OverflowError, e:
-            print "Error: Overflow on variable (type %s): %s: %s"%(type(d), d, e)
+        except(OverflowError, e):
+            print("Error: Overflow on variable (type %s): %s: %s"%(type(d), d, e))
             raise
         return s

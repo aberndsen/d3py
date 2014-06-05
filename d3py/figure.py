@@ -162,7 +162,7 @@ class Figure(object):
 
     def __exit__(self, ex_type, ex_value, ex_tb):
         if ex_tb is not None:
-            print "Cleanup after exception: %s: %s"%(ex_type, ex_value)
+            print("Cleanup after exception: %s: %s"%(ex_type, ex_value))
         self._cleanup()
 
     def __del__(self):
@@ -306,14 +306,14 @@ class Figure(object):
             Handler.logging = self.logging
             try:
                 self.httpd = ThreadedHTTPServer(("", self.port), Handler)
-            except Exception, e:
-                print "Exception %s"%e
+            except(Exception, e):
+                print("Exception %s"%e)
                 return False
             if blocking:
                 logging.info('serving forever on port: %s'%msgparams[1])
                 msg = "You can find your chart at " + url
-                print msg
-                print "Ctrl-C to stop serving the chart and quit!"
+                print(msg)
+                print("Ctrl-C to stop serving the chart and quit!")
                 self._server_thread = None
                 self.httpd.serve_forever()
             else:
@@ -324,17 +324,17 @@ class Figure(object):
                 self._server_thread.daemon = True
                 self._server_thread.start()
                 msg = "You can find your chart at " + url
-                print msg
+                print(msg)
 
 
     def _cleanup(self):
         try:
             if self.httpd is not None:
-                print "Shutting down httpd"
+                print("Shutting down httpd")
                 self.httpd.shutdown()
                 self.httpd.server_close()
-        except Exception, e:
-            print "Error in clean-up: %s"%e
+        except(Exception, e):
+            print("Error in clean-up: %s"%e)
 
 
 
